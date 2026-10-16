@@ -1,0 +1,9 @@
+remember the game QWOP? i want to make this game, but it's intended purpose is to get a team of people (who are all
+  remote over a google meet) to play when i start the clock. and the furthest distance anyone can record becomes
+  their score, and it also decides who presents first in the meeting. we will time box the clock to 5 minutes. at the
+  end of the 5 minutes, the shortest recorded distance goes first, longest goes last. everyone will be playing in
+  their own browsers. as the admin, i need a way to set up a room and then they can join it. play begins when i start
+  the clock. i also play, i just have admin control. we don't need any strict security protections here, i'm goin
+  gto deploy this locally on a pi in docker and i can just have a special url or query param that makes me the admin.
+  one container, deployed by docker compose on a pi. i dont' care about language or architecture. i want you to fill
+  in the rest of the gaps. when a user joins a room, they provide a name and that's it.
