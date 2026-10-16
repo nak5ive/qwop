@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QWOP Party</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Home: host or join -->
+  <section id="home" class="screen hidden">
+    <div class="card">
+      <h1>QWOP <span>PARTY</span></h1>
+      <p class="sub">Run as far as you can. Shortest distance presents first.</p>
+      <form id="host-form">
+        <h2>Host a room</h2>
+        <input id="host-name" placeholder="Your name" maxlength="24" autocomplete="off" required>
+        <button type="submit">Create room</button>
+      </form>
+      <div class="or">or</div>
+      <form id="code-form">
+        <h2>Join a room</h2>
+        <input id="code-input" placeholder="Room code" maxlength="4" autocomplete="off" required>
+        <button type="submit">Join</button>
+      </form>
+      <p class="err" id="home-err"></p>
+    </div>
+  </section>
+
+  <!-- Join a specific room -->
+  <section id="join" class="screen hidden">
+    <div class="card">
+      <h1>QWOP <span>PARTY</span></h1>
+      <p class="sub">Room <b id="join-code"></b></p>
+      <form id="join-form">
+        <input id="join-name" placeholder="Your name" maxlength="24" autocomplete="off" required>
+        <button type="submit">Join</button>
+      </form>
+      <p class="err" id="join-err"></p>
+    </div>
+  </section>
+
+  <section id="missing" class="screen hidden">
+    <div class="card">
+      <h1>QWOP <span>PARTY</span></h1>
+      <p class="sub">That room doesn't exist (any more).</p>
+      <a class="btn" href="/">Back home</a>
+    </div>
+  </section>
+
+  <!-- The game -->
+  <section id="game" class="hidden">
+    <canvas id="c"></canvas>
+
+    <div id="hud-left">
+      <div class="pill">Room <b id="room-code"></b> <button id="copy-link" class="small">Copy invite link</button></div>
+      <div id="admin" class="panel hidden">
+        <div class="panel-title">Host controls</div>
+        <label>Clock
+          <select id="duration">
+            <option value="60">1 min</option>
+            <option value="120">2 min</option>
+            <option value="180">3 min</option>
+            <option value="300">5 min</option>
+            <option value="600">10 min</option>
+          </select>
+        </label>
+        <div class="row">
+          <button id="btn-start" class="go">Start clock</button>
+          <button id="btn-end" class="small">End now</button>
+          <button id="btn-reset" class="small">Back to lobby</button>
+        </div>
+        <button id="copy-admin" class="link">Copy my admin link</button>
+      </div>
+    </div>
+
+    <div id="hud-center">
+      <div id="timer">5:00</div>
+      <div id="phase-label"></div>
+      <div id="dist">0.0 m</div>
+    </div>
+
+    <aside id="board">
+      <div class="panel-title">Leaderboard <span id="me-attempts"></span></div>
+      <ol id="board-list"></ol>
+    </aside>
+
+    <div id="banner" class="hidden"></div>
+    <div id="countdown" class="hidden"></div>
+
+    <div id="keys">
+      <button data-key="q">Q</button><button data-key="w">W</button>
+      <span class="gap"></span>
+      <button data-key="o">O</button><button data-key="p">P</button>
+      <div class="hint">Q/W thighs · O/P calves · SPACE restart</div>
+    </div>
+
+    <div id="results" class="modal hidden">
+      <div class="card wide">
+        <h2>Presentation order</h2>
+        <p class="sub">Shortest distance goes first. Longest goes last.</p>
+        <ol id="results-list"></ol>
+        <div class="row">
+          <button id="copy-results">Copy order</button>
+          <button id="close-results" class="small">Keep practicing</button>
+        </div>
+        <div class="row admin-only hidden">
+          <button id="again" class="go">Run it again</button>
+        </div>
+      </div>
+    </div>
+    <button id="show-results" class="pill-btn hidden">Show results</button>
+    <div id="toast" class="hidden"></div>
+  </section>
+
+  <script src="/vendor/planck.min.js"></script>
+  <script src="/runner.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

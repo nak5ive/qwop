@@ -1,0 +1,13 @@
+services:
+  qwop:
+    build: .
+    image: qwop-party
+    container_name: qwop-party
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - qwop-data:/data
+
+volumes:
+  qwop-data:

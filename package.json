@@ -1,0 +1,14 @@
+{
+  "name": "qwop-party",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multiplayer QWOP for deciding who presents first",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "sim": "node scripts/sim.js"
+  },
+  "dependencies": {
+    "planck": "1.0.0"
+  }
+}
